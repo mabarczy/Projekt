@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RoomReservation</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div id="menu-wrap">
+<div th:replace="fragments.html :: menu"></div>
+</div>
+<div id="content">
+    <div class="date-form">
+        <form method="post">
+            <label>Data początku</label>
+            <input th:value="${startDate.toString()}" name="startDate" type="date">
+            <label >Data końca</label>
+            <input th:value="${endDate.toString()}" name="endDate" type="date">
+            <input type="submit">
+        </form>
+    </div>
+    <div id="room-wrapper">
+    <div class="room-field" th:each="room : ${rooms}">
+        <div th:text="${room.number}" class="number"></div>
+        <div th:text="${room.roomtype}" class="type"></div>
+        <div th:text="'Cena: ' + ${room.price}" class="price"></div>
+        <a th:if="${logged == true}" th:href="@{/reservations/add/{roomId}(roomId=${room.id})}">Zarezerwuj</a>
+    </div>
+    </div>
+</div>
+</body>
+</html>

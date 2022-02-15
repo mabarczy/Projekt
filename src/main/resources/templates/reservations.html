@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>RoomReservation</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div id="menu-wrap">
+<div th:replace="fragments.html :: menu"></div>
+</div>
+<div id="reservation-wrapper">
+  <div th:each="reservation : ${reservations}" class="reservation">
+    <div>Data utworzenia</div>
+    <div th:text="${reservation.makingDate}"></div>
+    <div>Data początku</div>
+    <div th:text="${reservation.startDate}"></div>
+    <div>Data końca</div>
+    <div th:text="${reservation.endDate}"></div>
+    <div>Cena</div>
+    <div th:text="${reservation.price}"></div>
+
+  </div>
+</div>
+</body>
+</html>
